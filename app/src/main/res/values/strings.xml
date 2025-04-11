@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyApp12</string>
+    <string name="search">Search...</string>
+    <string name="filter_item">Filter : Item</string>
+</resources>

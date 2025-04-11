@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "645460585606",
+    "project_id": "orderlist03",
+    "storage_bucket": "orderlist03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645460585606:android:8a5f8cfc475a52de35b507",
+        "android_client_info": {
+          "package_name": "com.alfajar.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCySOeh2oRil-Xxf_mXKRlGhoJP1dYkypY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645460585606:android:f86b4261020318aa35b507",
+        "android_client_info": {
+          "package_name": "com.alfajar.myapp12"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCySOeh2oRil-Xxf_mXKRlGhoJP1dYkypY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
