@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alfajar.myapp12.databinding.ActivityMainBinding
-import com.alfajar.myapp12.model.Order
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {

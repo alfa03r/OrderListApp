@@ -1,37 +1,35 @@
 package com.alfajar.myapp12
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.alfajar.myapp12.model.Order
+import androidx.lifecycle.viewModelScope
+import com.alfajar.myapp12.db.dao.OrderDao
+import com.alfajar.myapp12.db.entity.OrderData
+import com.alfajar.myapp12.db.firebase.FirebaseData
+import com.alfajar.myapp12.db.repos.OrderRepository
+import com.alfajar.myapp12.db.room.AppDB
+import kotlinx.coroutines.launch
 
-class OrderViewModel : ViewModel() {
-    private val allOrders = mutableListOf(
-        Order("Laptop", "Andi", "Jakarta", "2025-04-05"),
-        Order("Buku", "Budi", "Bandung", "2025-04-07"),
-        Order("Printer", "Cici", "Surabaya", "2025-04-03"),
-        Order("Kamera", "Dedi", "Yogyakarta", "2025-04-07")
-    )
+class OrderViewModel(private val repo: OrderRepository) : ViewModel() {
 
-    private val _filteredOrders = MutableLiveData<List<Order>>(allOrders)
-    val filteredOrders: LiveData<List<Order>> = _filteredOrders
+    private val mOrder = MutableLiveData<List<OrderData>>()
+    val orders: LiveData<List<OrderData>> get() = mOrder
 
-    fun filterOrders(query: String, filterType: FilterType) {
-        _filteredOrders.value = if (query.isBlank()) {
-            allOrders
-        } else {
-            allOrders.filter {
-                when (filterType) {
-                    FilterType.ITEM_NAME -> it.itemName.contains(query, ignoreCase = true)
-                    FilterType.SENDER -> it.sender.contains(query, ignoreCase = true)
-                    FilterType.DESTINATION -> it.destination.contains(query, ignoreCase = true)
-                    FilterType.DATE -> it.deliveryDate == query
-                }
-            }
-        }
+    private val mFilter = MutableLiveData<List<OrderData>>()
+    val filterData: LiveData<List<OrderData>> get() = mFilter
+
+    private var currentFilter: String = "Item" //Default
+
+    init {
+        fetchOrderFromFirebase()
     }
 
-    enum class FilterType {
-        ITEM_NAME, SENDER, DESTINATION, DATE
+    private fun fetchOrderFromFirebase() {
+        viewModelScope.launch {
+            val fetchOrders = repo.getAllOrders()
+        }
     }
 }

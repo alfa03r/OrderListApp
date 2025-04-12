@@ -6,13 +6,15 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.alfajar.myapp12.db.entity.OrderData
-import com.alfajar.myapp12.model.Order
 
 @Dao
 interface OrderDao {
     @Query("SELECT * FROM orders")
     fun getAllOrders(): LiveData<List<OrderData>>
 
+    @Query("DELETE FROM orders ")
+    suspend fun clearOrders()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrders(order: List<OrderData>)
+    suspend fun insertAll(order: List<OrderData>)
 }

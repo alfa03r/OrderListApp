@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alfajar.myapp12.databinding.ItemOrderBinding
 import com.alfajar.myapp12.db.entity.OrderData
-import com.alfajar.myapp12.model.Order
 
 class OrderAdapter(private var orderList: List<OrderData>, private val onItemClick: (OrderData)) : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
